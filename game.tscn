@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://btk3qywqwdo7l"]
+
+[ext_resource type="PackedScene" uid="uid://m7rbkse1vm2" path="res://player.tscn" id="1_sgs4r"]
+[ext_resource type="PackedScene" uid="uid://bh0q7na6d85kn" path="res://ball.tscn" id="2_6nhlg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pyui"]
+size = Vector2(1203, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkyu5"]
+size = Vector2(1199, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bi01"]
+size = Vector2(21, 733)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmbqt"]
+size = Vector2(79, 739)
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_sgs4r")]
+position = Vector2(13, 315)
+ControlledByPlayer = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(596, -18)
+shape = SubResource("RectangleShape2D_2pyui")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(597, 657)
+shape = SubResource("RectangleShape2D_mkyu5")
+
+[node name="AiPlayer" parent="." instance=ExtResource("1_sgs4r")]
+position = Vector2(1135, 280)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-12, 242)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(0.5, 85.5)
+shape = SubResource("RectangleShape2D_4bi01")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1207.5, 85.5)
+shape = SubResource("RectangleShape2D_gmbqt")
+
+[node name="Ball" parent="." instance=ExtResource("2_6nhlg")]
+position = Vector2(597, 307)
+can_sleep = false
+Speed = 100.0
